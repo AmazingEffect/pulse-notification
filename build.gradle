@@ -24,10 +24,26 @@ repositories {
 }
 
 dependencies {
+	// spring
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
-	compileOnly 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+
+	// db
 	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'org.postgresql:r2dbc-postgresql'
+//	compileOnly 'com.github.jasync-sql:jasync-postgresql:2.2.0'
+
+	// macOs dns netty문제 해결 (aarch_64 꼭 붙이기)
+	runtimeOnly 'io.netty:netty-resolver-dns-native-macos:4.1.108.Final:osx-aarch_64'
+
+	// kafka
+	implementation 'org.springframework.kafka:spring-kafka'
+
+	// lombok
+	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
