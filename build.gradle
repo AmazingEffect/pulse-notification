@@ -31,10 +31,10 @@ dependencies {
 	// db
 	runtimeOnly 'org.postgresql:postgresql'
 	runtimeOnly 'org.postgresql:r2dbc-postgresql'
-//	compileOnly 'com.github.jasync-sql:jasync-postgresql:2.2.0'
-
-	// macOs dns netty문제 해결 (aarch_64 꼭 붙이기)
 	runtimeOnly 'io.netty:netty-resolver-dns-native-macos:4.1.108.Final:osx-aarch_64'
+
+	// mail
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 	// kafka
 	implementation 'org.springframework.kafka:spring-kafka'
