@@ -1,0 +1,18 @@
+# ?? ?? ??
+server:
+  port: 8083
+
+spring:
+  # r2dbc ??
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/notification
+    username: root
+    password: 1234
+
+  # ??? ??
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
+      group-id: member-group
+    producer:
+      bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
