@@ -1,4 +1,4 @@
-package com.pulse.notification.kafka;
+package com.pulse.notification.listener;
 
 import com.pulse.notification.service.NotificationService;
 import lombok.RequiredArgsConstructor;
