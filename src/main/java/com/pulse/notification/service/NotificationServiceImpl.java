@@ -1,6 +1,6 @@
 package com.pulse.notification.service;
 
-import com.pulse.notification.controller.response.NotificationDTO;
+import com.pulse.notification.controller.http.response.NotificationDTO;
 import com.pulse.notification.domain.Notification;
 import com.pulse.notification.mapper.NotificationMapper;
 import com.pulse.notification.repository.NotificationRepository;
