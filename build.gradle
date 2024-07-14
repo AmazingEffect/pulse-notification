@@ -1,7 +1,16 @@
+buildscript {
+	ext {
+		protobufVersion = '3.25.1'
+		protobufPluginVersion = '0.9.4'
+		grpcVersion = '1.58.1'
+	}
+}
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.1'
 	id 'io.spring.dependency-management' version '1.1.5'
+	id 'com.google.protobuf' version "${protobufPluginVersion}"
 }
 
 group = 'com.pulse'
@@ -21,12 +30,17 @@ configurations {
 
 repositories {
 	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/release' }
+	mavenLocal()  // 이 부분을 추가하여 로컬 Maven 리포지토리를 참조합니다.
 }
+
 
 dependencies {
 	// spring
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
 
 	// db
 	runtimeOnly 'org.postgresql:postgresql'
@@ -36,8 +50,30 @@ dependencies {
 	// mail
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
-	// kafka
+	// kafka 설정
 	implementation 'org.springframework.kafka:spring-kafka'
+
+	// msa 로깅 Jaeger 설정
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'io.micrometer:micrometer-tracing-bridge-otel'
+	implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
+
+	// grpc 설정
+	implementation "com.google.protobuf:protobuf-java-util:${protobufVersion}"
+	implementation "com.google.protobuf:protobuf-java:${protobufVersion}"
+
+	// grpc 서버, 클라이언트 설정
+	implementation 'net.devh:grpc-client-spring-boot-starter:2.15.0.RELEASE'
+	implementation 'net.devh:grpc-server-spring-boot-starter:2.15.0.RELEASE'
+	implementation "io.grpc:grpc-netty:${grpcVersion}"
+	implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+	implementation "io.grpc:grpc-stub:${grpcVersion}"
+	compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
+
+	// 라이브러리 추가
+	implementation 'com.pulse.common:event-library:1.0.0'
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 
 	// mapstruct 설정
 	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
@@ -52,6 +88,26 @@ dependencies {
 	testImplementation 'io.projectreactor:reactor-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
+
+protobuf {
+	protoc {
+		artifact = "com.google.protobuf:protoc:${protobufVersion}"
+	}
+	clean {
+		delete generatedFilesBaseDir
+	}
+	plugins {
+		grpc {
+			artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+		}
+	}
+	generateProtoTasks {
+		all()*.plugins {
+			grpc {}
+		}
+	}
+}
+
 
 tasks.named('test') {
 	useJUnitPlatform()
