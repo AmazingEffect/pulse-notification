@@ -1,6 +1,6 @@
-package com.pulse.notification.domain;
+package com.pulse.notification.entity;
 
-import com.pulse.notification.domain.constant.MessageStatus;
+import com.pulse.notification.entity.constant.MessageStatus;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;

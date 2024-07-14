@@ -1,4 +1,4 @@
-package com.pulse.notification.domain.constant;
+package com.pulse.notification.entity.constant;
 
 public enum MessageStatus {
 

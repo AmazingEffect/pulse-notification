@@ -1,6 +1,6 @@
 package com.pulse.notification.repository;
 
-import com.pulse.notification.domain.NotificationOutbox;
+import com.pulse.notification.entity.NotificationOutbox;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
 import java.util.Optional;

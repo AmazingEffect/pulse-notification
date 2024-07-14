@@ -1,4 +1,4 @@
-package com.pulse.notification.domain;
+package com.pulse.notification.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.Id;

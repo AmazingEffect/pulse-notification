@@ -2,8 +2,8 @@ package com.pulse.notification.service.event;
 
 import com.pulse.event_library.event.OutboxEvent;
 import com.pulse.event_library.service.OutboxService;
-import com.pulse.notification.domain.NotificationOutbox;
-import com.pulse.notification.domain.constant.MessageStatus;
+import com.pulse.notification.entity.NotificationOutbox;
+import com.pulse.notification.entity.constant.MessageStatus;
 import com.pulse.notification.repository.OutboxRepository;
 import io.opentelemetry.api.trace.Span;
 import lombok.RequiredArgsConstructor;

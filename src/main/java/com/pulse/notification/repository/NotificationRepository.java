@@ -1,6 +1,6 @@
 package com.pulse.notification.repository;
 
-import com.pulse.notification.domain.Notification;
+import com.pulse.notification.entity.Notification;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Flux;
 
