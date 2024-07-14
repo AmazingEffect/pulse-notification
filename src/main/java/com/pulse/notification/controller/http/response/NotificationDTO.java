@@ -1,4 +1,4 @@
-package com.pulse.notification.controller.response;
+package com.pulse.notification.controller.http.response;
 
 import lombok.Data;
 

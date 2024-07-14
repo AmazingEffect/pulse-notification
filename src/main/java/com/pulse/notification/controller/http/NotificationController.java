@@ -1,7 +1,6 @@
-package com.pulse.notification.controller;
+package com.pulse.notification.controller.http;
 
-import com.pulse.notification.controller.response.NotificationDTO;
-import com.pulse.notification.domain.Notification;
+import com.pulse.notification.controller.http.response.NotificationDTO;
 import com.pulse.notification.service.NotificationService;
 import com.pulse.notification.service.SseService;
 import lombok.RequiredArgsConstructor;

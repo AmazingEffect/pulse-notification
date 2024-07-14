@@ -1,6 +1,6 @@
 package com.pulse.notification.service;
 
-import com.pulse.notification.controller.response.NotificationDTO;
+import com.pulse.notification.controller.http.response.NotificationDTO;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Sinks;

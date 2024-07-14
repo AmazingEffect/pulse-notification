@@ -1,18 +1,51 @@
-# ?? ?? ??
+# 포트 설정
 server:
-  port: 8083
+  port: 8084
+
+# JWT 설정
+jwt:
+  jwtSecret: "aVeryLongSecretKeyThatIsAtLeast32BytesLongForSecurity"
+  jwtExpiration: 3600000 # 1시간 (밀리초 단위)
 
 spring:
-  # r2dbc ??
+  # 애플리케이션 이름 설정
+  application:
+    name: notification-service
+
+  # r2dbc 설정
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/notification
     username: root
     password: 1234
 
-  # ??? ??
+  # 카프카 설정
   kafka:
     consumer:
       bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
-      group-id: member-group
+      group-id: notification-group
     producer:
       bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
+
+
+# msa 로깅 설정 (jaeger)
+otel:
+  resource:
+    attributes:
+      service.name: ${spring.application.name}  # OpenTelemetry 서비스 이름 설정
+
+tracing:
+  url: http://localhost:4318/v1/traces
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+logging:
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+# gRPC 서버 포트 설정
+grpc:
+  server:
+    port: 50054

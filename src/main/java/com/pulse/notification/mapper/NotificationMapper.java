@@ -1,6 +1,6 @@
 package com.pulse.notification.mapper;
 
-import com.pulse.notification.controller.response.NotificationDTO;
+import com.pulse.notification.controller.http.response.NotificationDTO;
 import com.pulse.notification.domain.Notification;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
