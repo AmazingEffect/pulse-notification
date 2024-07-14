@@ -1,16 +1,16 @@
 package com.pulse.notification.service;
 
-import com.pulse.notification.domain.Notification;
+import com.pulse.notification.controller.response.NotificationDTO;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface NotificationService {
 
-    Mono<Notification> createNotification(Long memberId, Long typeId, String message);
+    Mono<NotificationDTO> createNotification(Long memberId, Long typeId, String message);
 
-    Flux<Notification> getUnreadNotifications(Long memberId);
+    Flux<NotificationDTO> getUnreadNotifications(Long memberId);
 
-    Flux<Notification> getAllNotifications(Long memberId);
+    Flux<NotificationDTO> getAllNotifications(Long memberId);
 
     Mono<Void> markAsRead(Long notificationId);
 
