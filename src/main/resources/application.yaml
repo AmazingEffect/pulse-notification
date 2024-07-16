@@ -23,6 +23,7 @@ spring:
     consumer:
       bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
       group-id: notification-group
+      enable-auto-commit: false
     producer:
       bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
 
