@@ -24,6 +24,7 @@ spring:
       bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
       group-id: notification-group
       enable-auto-commit: false
+      max-poll-records: 1
     producer:
       bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
 
